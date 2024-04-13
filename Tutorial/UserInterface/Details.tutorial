@@ -1,0 +1,118 @@
+@Tutorial {
+    @Intro(title: "Improve the user interface") {
+        The app's most important features are implemented, but there is still some polishing required.
+    }
+
+    @Section(title: "Remember the window's size") {
+        @ContentAndMedia {
+            A lot of apps for the GNOME desktop remember the window's size when being closed and reopened.
+            People have different preferences for window sizes for applications for organizing tasks, so this can enhance usability significantly.
+        }
+
+        @Steps {
+            @Step {
+                Remove the default window size modifier.
+                @Code(name: "Subtasks.swift", file: "Subtasks8.swift", previousFile: "Subtasks7.swift") {
+                    @Image(source: "Subtasks8.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Make the content view a ``WindowView`` which is a special type of view that can modify the parent window if it is the direct child of a window.
+                @Code(name: "ContentView.swift", file: "ContentView10.swift", previousFile: "ContentView9.swift") {
+                    @Image(source: "Subtasks8.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add state variables saving the window size and maximized state, and connect them as bindings to the window's properties.
+                @Code(name: "ContentView.swift", file: "ContentView11.swift") {
+                    @Image(source: "ContentView11.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Add a placeholder page") {
+        @ContentAndMedia {
+            Currently, if there is no task in a list, an empty list is displayed.
+            A more welcoming alternative would be a placeholder page.
+        }
+
+        @Steps {
+            @Step {
+                The ``StatusPage`` widget is used for placeholder pages.
+                @Code(name: "TaskList.swift", file: "TaskList32.swift", previousFile: "TaskList31.swift") {
+                    @Image(source: "ContentView11.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Adjust the initial height to match the height of the placeholder page.
+                @Code(name: "ContentView.swift", file: "ContentView12.swift", previousFile: "ContentView11.swift") {
+                    @Image(source: "ContentView11.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Add the close keyboard shortcut") {
+        @ContentAndMedia {
+            You have previously seen how to add a keyboard shortcut to a button.
+            It is possible to define a keyboard shortcut on a window without an equivalent button using ``Window/keyboardShortcut(_:action:)`` and ``Window/appKeyboardShortcut(_:action:)``.
+            For the close keyboard shortcut, as this is a very common action, there are predefined shortcuts.
+        }
+
+        @Steps {
+            @Step {
+                Add the keyboard shortcuts `Ctrl+w` and `Ctrl+q` for quitting the app.
+
+                `Ctrl+w` added via ``Window/closeShortcut()`` technically closes the window, but as this app does not support multiple windows and the app terminates when the last window is closed, this is the same as quitting the app.
+                @Code(name: "Subtasks.swift", file: "Subtasks9.swift", previousFile: "Subtasks8.swift") {
+                    @Image(source: "ContentView11.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Set minimum window size") {
+        @ContentAndMedia {
+            It is currently possible to resize the window to very small sizes.
+            This doesn't make sense, so let's define a minimum size explicitly.
+        }
+
+        @Steps {
+            @Step {
+                Define the minimum size in the `ContentView.swift` file.
+                @Code(name: "ContentView.swift", file: "ContentView13.swift", previousFile: "ContentView12.swift") {
+                    @Image(source: "ContentView11.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Add an about dialog") {
+        @ContentAndMedia {
+            GNOME apps usually have a main ``Menu`` with buttons that are not used very often but can be useful sometimes.
+            The last entry is a button `About <App>` that opens a dialog containing information about the app.
+            As the Subtasks app focuses on its core features only, there is no need for a whole menu, but there should be an about dialog.
+            Therefore, add a simple button into the toolbar at the position where the delete button is, but in the initial view.
+        }
+
+        @Steps {
+            @Step {
+                Add the button.
+                @Code(name: "TaskList.swift", file: "TaskList33.swift", previousFile: "TaskList32.swift")
+            }
+            @Step {
+                Update the localized strings.
+                @Code(name: "Localized.yml", file: "Localized7.yml", previousFile: "Localized6.yml") {
+                    @Image(source: "Localized7.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Then, add the ``View/aboutDialog(visible:app:developer:version:icon:website:issues:)`` modifier.
+                @Code(name: "TaskList.swift", file: "TaskList34.swift", previousFile: "TaskList33.swift") {
+                    @Image(source: "Localized7.png", alt: "The window.")
+                }
+            }
+        }
+    }
+}

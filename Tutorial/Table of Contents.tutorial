@@ -1,0 +1,78 @@
+@Tutorials(name: "Develop Apps for GNOME") {
+
+    @Intro(title: "Develop Apps for GNOME") {
+        Learn the basics of _``Adwaita`` for Swift_ to create beautiful apps for the GNOME desktop.
+        @Image(source: "Overview.svg", alt: "An iMac with GNOME.")
+    }
+
+    @Volume(name: "Foundation") {
+        Get familiar with the GNOME desktop, the Swift programming language and the _Adwaita for Swift_ framework.
+        @Image(source: "Foundation.svg", alt: "An illustration showing packages, illustrating different parts building the foundation.")
+
+        @Chapter(name: "About GNOME") {
+            Find information about the GNOME project, and learn how to set up the GNOME desktop environment and contribute to this awesome project.
+            @TutorialReference(tutorial: "doc:GNOME")
+            @TutorialReference(tutorial: "doc:SetUpGNOME")
+            @TutorialReference(tutorial: "doc:Contributing")
+            @Image(source: "GNOME.png", alt: "The GNOME logo.")
+        }
+
+        @Chapter(name: "The Swift programming language") {
+            Understand Swift features used by the _Adwaita for Swift_ framework.
+            @TutorialReference(tutorial: "doc:LearnSwift")
+            @TutorialReference(tutorial: "doc:DeclarativeProgramming")
+            @Image(source: "Swift.svg", alt: "The Swift logo.")
+        }
+
+        @Chapter(name: "Adwaita for Swift essentials") {
+            Get to know the most important principles of the _Adwaita for Swift_ framework.
+            @TutorialReference(tutorial: "doc:HelloWorld")
+            @TutorialReference(tutorial: "doc:Views")
+            @TutorialReference(tutorial: "doc:Documentation")
+            @Image(source: "Essentials.svg", alt: "An icon showing a person walking with a child, representing the first steps.")
+        }
+
+    }
+
+    @Volume(name: "Subtasks") {
+        Create your first app targeting the GNOME desktop.
+        @Image(source: "Tasks.svg", alt: "An illustration showing a pen and text block."
+
+        @Chapter(name: "Modelling data") {
+            Let's start developing your first app by defining data inside and outside your app.
+            @TutorialReference(tutorial: "doc:AppFlatpakData")
+            @TutorialReference(tutorial: "doc:TasksData")
+            @Image(source: "Data.svg", alt: "A file cabinet representing structure.")
+        }
+
+        @Chapter(name: "Designing the user interface") {
+            Learn how to model views and build the navigation in _Adwaita for Swift_.
+            @TutorialReference(tutorial: "doc:TaskView")
+            @TutorialReference(tutorial: "doc:Navigation")
+            @TutorialReference(tutorial: "doc:Details")
+            @Image(source: "UI.svg", alt: "An icon representing the list of tasks.")
+        }
+
+        @Chapter(name: "Final steps") {
+            You now have a functioning app. Learn how to install it.
+            @TutorialReference(tutorial: "doc:Install")
+            @Image(source: "FinalSteps.svg", alt: "An icon showing feet.")
+        }
+
+    }
+
+    @Resources {
+        Explore more resources for learning about creating beautiful apps with _Adwaita for Swift._
+        @Documentation(destination: "https://aparokshaui.github.io/adwaita-swift") {
+            Browse and search detailed API documentation.
+
+            - [Keyboard shortcuts](https://aparokshaui.github.io/adwaita-swift/documentation/adwaita/keyboardshortcuts)
+            - [Creating widgets](https://aparokshaui.github.io/adwaita-swift/documentation/adwaita/creatingwidgets)
+            - [Publishing apps](https://aparokshaui.github.io/adwaita-swift/documentation/adwaita/publishingapps)
+        }
+        @Forums(destination: "https://github.com/AparokshaUI/adwaita-swift/discussions") {
+            Discuss _Adwaita for Swift_, ask questions, and showcase your work.
+        }
+    }
+
+}

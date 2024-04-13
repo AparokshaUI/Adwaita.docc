@@ -1,0 +1,91 @@
+@Tutorial {
+
+    @Intro(title: "Set up the app project") {
+        This tutorial shows how to create _Subtasks_, an app for organizing your tasks.
+        You'll start by cloning and modifying the template repository.
+    }
+
+    @Section(title: "Clone the template repository") {
+        @ContentAndMedia {
+            Create the new app's directory.
+        }
+
+        @Steps {
+            @Step {
+                Open your terminal client and navigate to a directory you want to create the package in (e.g. `~/Documents/`).
+                @Image(source: "ChangeDirectory.png", alt: "The GNOME Console app.")
+            }
+            @Step {
+                Clone the template repository into the `Subtasks` directory using `git clone https://github.com/AparokshaUI/AdwaitaTemplate Subtasks`.
+                @Image(source: "CloneTemplateSubtasks.png", alt: "The GNOME Console app.")
+            }
+            @Step {
+                Use the `Select a Folder...` button in the welcome window of GNOME Builder to open the `Subtasks` directory.
+
+                It will start to install the dependencies automatically.
+                @Image(source: "OpenFolder.png", alt: "GNOME Builder's welcome view.")
+            }
+            @Step {
+                Run the app using the play button.
+                A window should appear.
+                @Image(source: "AdwaitaTemplate.png", alt: "The result.")
+            }
+        }
+    }
+
+    @Section(title: "Update the app information") {
+        @ContentAndMedia {
+            Replace placeholder information about the Adwaita template with information about the _Subtasks_ app.
+        }
+
+        @Steps {
+            @Step {
+                Rename the file `io.github.AparokshaUI.AdwaitaTemplate.json` to an app ID of your choice.
+
+                App IDs should follow the rules discussed in the [GNOME Developer Documentation](https://developer.gnome.org/documentation/tutorials/application-id.html).
+                @Image(source: "RenameManifest.png", alt: "Rename the manifest file in GNOME Builder.")
+            }
+            @Step {
+                Change the active GNOME Builder configuration to your new app ID, or restart GNOME Builder in order to update the manifest file.
+                @Image(source: "ActiveConfiguration.png", alt: "The active configuration chooser in GNOME Builder.")
+            }
+            @Step {
+                Replace occurrences of the app ID `io.github.AparokshaUI.AdwaitaTemplate` inside the files by your app ID. Use the "Find in Files" tool (keyboard shortcut: `Shift+Ctrl+Alt+F`) for finding and replacing.
+                @Image(source: "ReplaceContent.png", alt: "Find and replace feature in GNOME Builder.")
+            }
+            @Step {
+                Replace occurrences the app's name in the form `AdwaitaTemplate` and `Adwaita Template` by the app name `Subtasks`.
+                @Image(source: "ReplaceContentName.png", alt: "Find and replace feature in GNOME Builder.")
+            }
+            @Step {
+                Open the folder containing the app icons (`data/icons`) in GNOME Files.
+                @Image(source: "OpenContainingFolder.png", alt: "Open containing folder feature in GNOME Builder.")
+            }
+            @Step {
+                Select all the icons and open the renaming dialog via the context menu or by pressing `F2`.
+                @Image(source: "Rename.png", alt: "The context menu.")
+            }
+            @Step {
+                Use the find and replace feature to replace `io.github.AparokshaUI.AdwaitaTemplate` by `io.github.david_swift.Subtasks`.
+                @Image(source: "GroupRename.png", alt: "The renaming dialog.")
+            }
+            @Step {
+                Navigate from `data/icons` to `data` in the Files app. Rename the two files using the same procedure.
+                @Image(source: "GroupRename2.png", alt: "The renaming dialog.")
+            }
+            @Step {
+                Rename the file `Sources/AdwaitaTemplate.swift` to `Subtasks.swift`.
+                @Image(source: "Rename2.png", alt: "Renaming dialog in GNOME Builder.")
+            }
+            @Step {
+                Change the app's summary and description in the metainfo file under `data`.
+                @Code(name: "io.github.david_swift.Subtasks.metainfo.xml", file: "MetainfoNew.xml", previousFile: "MetainfoOld.xml")
+            }
+            @Step {
+                Change the app's description in the desktop entry file under `data`.
+                @Code(name: "io.github.david_swift.Subtasks.desktop", file: "DesktopNew.desktop", previousFile: "DesktopOld.desktop")
+            }
+        }
+    }
+
+}

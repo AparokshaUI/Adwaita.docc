@@ -1,0 +1,65 @@
+@Tutorial {
+    @Intro(title: "Declarative programming") {
+        The declarative programming paradigm focuses on the _what_ rather than the _how_, meaning you focus on the outcome and less on the steps to achieve it.
+    }
+
+    @Section(title: "Array example") {
+        @ContentAndMedia {
+            Define an array in a more and a less declarative way.
+            If you're not familiar with collection types, you might want to take a look at the [language guide's article](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/collectiontypes/) first.
+        }
+
+        @Steps {
+            @Step {
+                You can see how creating an array in Swift with the content `[5, 10, 2, 3]` is done.
+                @Code(name: "main.swift", file: "Array1.swift")
+            }
+            @Step {
+                Let's assume Swift wouldn't offer this convenient syntax - how would you create the same array starting from an empty array?
+                @Code(name: "main.swift", file: "Array2.swift")
+            }
+            @Step {
+                The `append(_:)` function could be used for example.
+
+                In this code, it gets clearer _how_ the result of having the array in the memory is accomplished, but one would have to mentally follow the commands to construct the _what_.
+                Therefore, this code is more on the imperative side compared to the initial code example being rather on the declarative side.
+                @Code(name: "main.swift", file: "Array3.swift")
+            }
+        }
+    }
+
+    @Section(title: "Declarative definition of user interfaces") {
+        @ContentAndMedia {
+            In this tutorial, the focus will be on user interfaces.
+            Let's take a look at how declarative definitions of user interfaces look like in _Adwaita for Swift_.
+        }
+
+        @Steps {
+            @Step {
+                We'll start with the imperative way for comparison.
+
+                Follow the code and find out how the UI will look like.
+                You can actually create UIs in this way using the [CAdw library](https://github.com/AparokshaUI/adwaita-swift/blob/a4b565723b39ba36dad5553e495c71b248a90b87/Package.swift#L22) in the _Adwaita for Swift_ package, and use the documentation [here](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/index.html) as a reference.
+                @Code(name: "main.swift", file: "HelloWorld1.swift")
+            }
+            @Step {
+                In the preview image, you can see how the UI actually looks like.
+
+                The process of understanding the code might feel very similar to constructing the array by simulating the `append(_:)` function in one's head.
+                It's easier to answer _how_ the UI is constructed than _what_ the UI will look like.
+                @Code(name: "main.swift", file: "HelloWorld1.swift") {
+                    @Image(source: "HelloWorld1.png", alt: "The example window.")
+                }
+            }
+            @Step {
+                Now, the same UI but written using the ``Adwaita`` library of _Adwaita for Swift_ instead of _CAdw_. In this tutorial, we won't touch `CAdw` and use ``Adwaita`` only.
+
+                This feels much more like the declarative declaration of an array, right?
+                We cannot answer the _how_ by looking at the code, in fact, _CAdw_ is used behind the scenes, but it's easier to answer the _what_.
+                @Code(name: "main.swift", file: "HelloWorld2.swift") {
+                    @Image(source: "HelloWorld1.png", alt: "The example window.")
+                }
+            }
+        }
+    }
+}

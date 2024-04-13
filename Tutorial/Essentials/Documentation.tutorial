@@ -1,0 +1,39 @@
+@Article {
+
+    @Intro(title: "Documentation") {
+        Being able to read the documentation is crucial as you won't be able to remember all the widgets.
+    }
+
+    @ContentAndMedia {
+        # Topics
+        You can find an overview of the available documentation [here](https://aparokshaui.github.io/adwaita-swift/documentation/adwaita/#topics) or in the sidebar.
+        It contains a section with the available tutorials (such as this one), articles covering the basics, advanced articles, and multiple sections covering the available types.
+
+        You'll most often use the section `Views` as views are the most important part of apps.
+
+        # Search
+        Imagine you want to add an equivalent to SwiftUI's progress view (a progress bar) to your app but don't know whether there is a progress view available.
+        Enter slash (`/`) on your keyboard, no matter where you are in the docs, and a search bar will pop up. Alternatively, use the bar or button at the bottom of the sidebar.
+        Now, start search for progress view. You'll find a view called ``ProgressBar`` very fast. Press enter to navigate to its documentation.
+
+        # Read docs for a view
+        Navigate to the topics section in the docs. There, you'll find two initializers.
+        An initializer is the "function" you call inside another view or a window to call the view (such as `ContentView()`).
+        In this case, you can either use `ProgressBar()` or `ProgressBar(value: 5, total: 10)`.
+
+        Under the instance methods section, you find modifiers. You can for example find the ``ProgressBar/inverted(_:)`` modifier with a short description.
+        The following view shows how to use it:
+        ```swift
+        ProgressBar(value: progress, total: 1)
+            .inverted()
+        ```
+
+        You might ask yourself why we don't pass a parameter since the method accepts a boolean. If you click on the method to see the method's definition, you can see that there is a default value (`= true`) passed to the parameter,
+        so we can omit it if we want to set it to `true`.
+
+        # Subtasks
+        Now that you have some knowledge about GNOME, Swift and _Adwaita for Swift_, continue writing your first app with the tutorial under <doc:AppFlatpakData>.
+        Remember that you can find more information about all the types and modifiers used in the tutorial in the ``Adwaita`` docs.
+    }
+
+}

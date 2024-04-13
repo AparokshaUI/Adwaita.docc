@@ -1,0 +1,264 @@
+@Tutorial {
+    @Intro(title: "The task list view") {
+        Designing a user interface is a complex task.
+        The core feature of the _Subtasks_ app is breaking down complex tasks into smaller subtasks, which is very helpful when creating UIs.
+        In this first tutorial about designing the UI, you'll create the task list view.
+    }
+
+    @Section(title: "Create a new view type") {
+        @ContentAndMedia {
+            It is common to strictly separate type definitions from the UI definition.
+            Therefore, you'll create a new file containing a new type.
+        }
+
+        @Steps {
+            @Step {
+                Create a new file `TaskList.swift` in the `Sources` folder and create the structure `TaskList`.
+
+                @Code(name: "TaskList.swift", file: "TaskList1.swift")
+            }
+            @Step {
+                Make this structure conform to ``View`` by adding a placeholder UI.
+                Now, it can be implemented in other views as a view.
+
+                @Code(name: "TaskList.swift", file: "TaskList2.swift")
+            }
+            @Step {
+                The view displays an array of tasks. The information has to be passed to the structure from its parent view.
+
+                @Code(name: "TaskList.swift", file: "TaskList3.swift")
+            }
+            @Step {
+                ``Binding`` enables the view to modify the data it gets from the parent view.
+                This is necessary in this case as the view enables to change the completion of the tasks.
+
+                @Code(name: "TaskList.swift", file: "TaskList4.swift")
+            }
+        }
+    }
+
+    @Section(title: "Preview the view") {
+        @ContentAndMedia {
+            You want to regularly test the appearance of your UI while developing.
+            Add the view to the window in order to observe changes when running the app.
+        }
+        @Steps {
+            @Step {
+                Open the `Subtasks.swift` file.
+                @Code(name: "Subtasks.swift", file: "Subtasks2.swift", previousFile: "Subtasks1.swift")
+            }
+            @Step {
+                Add example data as the app's state.
+                @Code(name: "Subtasks.swift", file: "Subtasks3.swift")
+            }
+            @Step {
+                Replace the current text view by the task list view and run the app for previewing.
+
+                When you edit the code, it is recommended to run the app in order to test the changes.
+                @Code(name: "Subtasks.swift", file: "Subtasks4.swift") {
+                    @Image(source: "Subtasks4.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Design the task list") {
+        @ContentAndMedia {
+            Discover how to use a list to present the available tasks.
+        }
+        @Steps {
+            @Step {
+                Open the `TaskList.swift` file.
+                @Code(name: "TaskList.swift", file: "TaskList4.swift") {
+                    @Image(source: "Subtasks4.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Replace the text view with a list showing the labels of the tasks.
+
+                The ``List`` renders its content for each element in the tasks array.
+                @Code(name: "TaskList.swift", file: "TaskList5.swift") {
+                    @Image(source: "TaskList5.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Wrap the list with a ``ScrollView``.
+
+                Lists grow as items are added, and can exceed the window's height.
+                The scroll view enables a part of the list to be hidden and shown with the scrolling gesture.
+                @Code(name: "TaskList.swift", file: "TaskList6.swift") {
+                    @Image(source: "TaskList5.png", alt: "The window.")
+                }
+            }
+            @Step {
+                An often used style for lists is "boxed-list". There are specialized widgets with the suffix "Row" that are designed to be used inside a boxed list.
+                Implement this style in the task list view.
+
+                A reference of the available styles is available in the [libadwaita docs](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/style-classes.html).
+                @Code(name: "TaskList.swift", file: "TaskList7.swift") {
+                    @Image(source: "TaskList7.png", alt: "The window.")
+                }
+            }
+            @Step {
+                You can see that the list expands to fill the whole scroll view.
+                It is possible to fix this by stating explicitly that the list should be aligned to the start of the scroll view.
+                @Code(name: "TaskList.swift", file: "TaskList8.swift") {
+                    @Image(source: "TaskList8.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add the check button to the beginning of the row.
+
+                On line 19, you can see that it is possible to directly get an element from an array as a binding when providing the identifier or index.
+                @Code(name: "TaskList.swift", file: "TaskList9.swift") {
+                    @Image(source: "TaskList9.png", alt: "The window.")
+                }
+            }
+            @Step {
+                In this app, a bit more padding around the list view and restricting the maximum width can make the UI fit better into the GNOME desktop.
+                @Code(name: "TaskList.swift", file: "TaskList10.swift") {
+                    @Image(source: "TaskList10.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add icons to indicate that one can navigate to the subtasks by pressing on the row, and make rows not selectable so that they feel more like buttons.
+
+                It is recommended to use the ``Icon`` type for default icons.
+                @Code(name: "TaskList.swift", file: "TaskList11.swift") {
+                    @Image(source: "TaskList11.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Add support for creating new tasks") {
+        @ContentAndMedia {
+            Explore dialogs while creating the essential feature to add new tasks.
+        }
+
+        @Steps {
+            @Step {
+                Delete the file `Sources/ToolbarView.swift`.
+                @Image(source: "DeleteFile.png", alt: "GNOME Builder's file context menu in the sidebar.")
+            }
+            @Step {
+                Remove the top toolbar in the file `Subtasks.swift`.
+                @Code(name: "Subtasks.swift", file: "Subtasks5.swift", previousFile: "Subtasks4.swift") {
+                    @Image(source: "Subtasks5.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Open the `TaskList.swift` file.
+                @Code(name: "TaskList.swift", file: "TaskList11.swift") {
+                    @Image(source: "Subtasks5.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add a top toolbar containing an empty header bar around the scroll view.
+                 @Code(name: "TaskList.swift", file: "TaskList12.swift") {
+                     @Image(source: "TaskList12.png", alt: "The window.")
+                 }
+            }
+            @Step {
+                Move the list definition to another computer variable, making the code more readable.
+                @Code(name: "TaskList.swift", file: "TaskList13.swift") {
+                    @Image(source: "TaskList12.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Instead of computed variables, it's possible to use functions if parameters are needed.
+
+                Extract the row into a function.
+                @Code(name: "TaskList.swift", file: "TaskList14.swift") {
+                    @Image(source: "TaskList12.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add a plus button to the start of the toolbar, opening the dialog that will be implemented in the next step.
+                @Code(name: "TaskList.swift", file: "TaskList15.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add the dialog. It will be presented when `showAddDialog` is true.
+
+                Depending on the window size, you will either see a bottom sheet as in the screenshot or a floating window when pressing the plus button.
+                @Code(name: "TaskList.swift", file: "TaskList16.swift") {
+                    @Image(source: "TaskList16.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Make an entry row for the new task's label the content of the dialog.
+                @Code(name: "TaskList.swift", file: "TaskList17.swift") {
+                    @Image(source: "TaskList17.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Replace the close button in the dialog's toolbar with two buttons.
+
+                A concept you haven't seen so far are signals conforming to the ``Signal`` type. When sending a signal (see line 23), the actions the signal is connected to (line 46, focusing the entry row) are executed.
+                @Code(name: "TaskList.swift", file: "TaskList18.swift") {
+                    @Image(source: "TaskList18.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Add keyboard shortcuts") {
+        @ContentAndMedia {
+            Adding keyboard shortcuts can significantly enhance navigation via the keyboard only which works already good without explicitly setting shortcuts.
+        }
+
+        @Steps {
+            @Step {
+                Add a keyboard shortcut for adding a task to the text entry.
+
+                The ``EntryRow/entryActivated(_:)`` modifier adds a function that is executed when the enter key is pressed inside the text entry.
+                @Code(name: "TaskList.swift", file: "TaskList19.swift", previousFile: "TaskList18.swift") {
+                    @Image(source: "TaskList18.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add a keyboard shortcut for opening the dialog using the ``Button/keyboardShortcut(_:app:)`` modifier.
+
+                The code will fail to build as you have added a new stored property to the structure that has to be passed to the structure as a parameter.
+                @Code(name: "TaskList.swift", file: "TaskList20.swift")
+            }
+            @Step {
+                Update the `Subtasks.swift` file so that the app builds again. Then, run the app and press `Ctrl+n` to test the shortcut.
+                @Code(name: "Subtasks.swift", file: "Subtasks6.swift", previousFile: "Subtasks5.swift") {
+                    @Image(source: "TaskList18.png", alt: "The window.")
+                }
+            }
+            @Step {
+                ``Binding/onSet(_:)`` lets you observe a binding. Reset the text whenever the dialog is closed using the escape key or by swiping down in the bottom sheet view.
+                @Code(name: "TaskList.swift", file: "TaskList21.swift", previousFile: "TaskList20.swift") {
+                    @Image(source: "TaskList18.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Localize the strings") {
+        @ContentAndMedia {
+            In this tutorial so far, we have simply used Swift string literals for labels of UI elements.
+            While this might work if the UI is available in English only, it makes sense to use a more adaptive solution.
+        }
+
+        @Steps {
+            @Step {
+                Open the file `Localized.yml`, and delete its content except for the first line that sets the fallback language to English.
+                @Code(name: "Localized.yml", file: "Localized1.yml")
+            }
+            @Step {
+                Then, add translations for all the languages you want to support. Follow the instructions in the [Localized docs](https://github.com/AparokshaUI/Localized?tab=readme-ov-file#usage).
+                @Code(name: "Localized.yml", file: "Localized2.yml")
+            }
+            @Step {
+                Update the UI to use the localized strings, and add a tooltip to the plus button.
+                @Code(name: "TaskList.swift", file: "TaskList22.swift", previousFile: "TaskList21.swift")
+            }
+        }
+    }
+
+}

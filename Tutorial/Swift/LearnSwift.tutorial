@@ -1,0 +1,262 @@
+@Article {
+
+    @Intro(title: "Learn Swift") {
+        Get to know concepts of the Swift programming language useful for _Adwaita for Swift_ and find additional resources.
+    }
+
+    @ContentAndMedia {
+        # Learn Swift
+        This is a quick overview over the Swift features relevant for _Adwaita for Swift_.
+        It's not intended to teach Swift to beginners, instead, it can be used for finding online material, to check whether you know the required concepts, and as a reference for later in the tutorial.
+        The official Swift tour is available [here](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/guidedtour) and there's a more detailed tutorial starting with [The Basics](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics).
+        You'll find links to relevant chapters in the "Additional information" boxes after every section on this page.
+
+        Other great resources are [100 Days of Swift](https://www.hackingwithswift.com/100), [Swift for C++ Practitioners](https://www.douggregor.net/posts/swift-for-cxx-practitioners-value-types/), [Swift Playgrounds](https://developer.apple.com/swift-playgrounds/) (Apple platforms only), and [WWDC videos](https://developer.apple.com/videos/swift/).
+
+        If you prefer, continue the tutorial without worrying about those Swift concepts, and learn Swift while learning how to create apps.
+
+    }
+
+    @ContentAndMedia {
+        # Swift concepts
+        This is a simple hello world program written in Swift:
+        ```swift
+        print("Hello, world!")
+        ```
+
+        ## Functions
+        `print` is a function accepting an argument. Create your own functions using the `func` keyword:
+        ```swift
+        func say(_ message: String, to person: String) {
+            print("\(message), \(person)!")
+        }
+
+        // Call the function
+        say("Hello", to: "Peter") // Hello, Peter!
+        ```
+        > Additional information:
+        > Dont understand the code, or interested in learning more about a topic?
+        > The additional information block is available at the end of every section.
+        > - [Functions](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions)
+        > - [The Basics](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics)
+        > - [Strings and Characters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters)
+
+        ## Structures
+        As one can see in the example, Swift provides the basic data type `String` for text.
+        There are different groups of types in Swift.
+        The most often used ones, especially with _Adwaita for Swift_, are structures:
+        ```swift
+        struct Rectangle {
+
+            var width: Int
+            var height: Int
+
+            var area: Int {
+                width * height
+            }
+
+        }
+
+        // Create an instance
+        let rectangle = Rectangle(width: 30, height: 20)
+        print(rectangle.area) // 600
+        ```
+
+        In this code snippet, there is a number of new patterns:
+        - `let rectangle = Rectangle(width: 30, height: 20)` assigns a value of the type `Rectangle` to a constant. The constant can be called by its name `rectangle` after the declaration.
+        - `width` is a stored property of the type `Int`, the basic data type for integers, on the structure `Rectangle`. As the name suggests, it stores a value on an instance of the type.
+        - `area` on the other hand is a computed property. It is a property that is calculated when it gets called instead of storing a value.
+        - Call a property using the syntax `instance.property`.
+
+        > Additional information:
+        > - [The Basics](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics)
+        > - [Basic Operators](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/basicoperators)
+        > - [Structures and Classes](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/classesandstructures)
+        > - [Functions](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions)
+        > - [Properties](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/properties)
+        > - [Initialization](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization)
+
+        ## Methods
+        Methods are functions that are defined on top of types, most importantly structures.
+        ```swift
+        struct Cat {
+
+            var name: String
+
+            func hasName(_ name: String) -> Bool {
+                self.name == name
+            }
+
+            mutating func rename(to newName: String) {
+                name = newName
+            }
+
+        }
+
+        // Create an instance
+        print(Cat(name: "Fred").hasName("Bob")) // false
+
+        // Save an instance to a variable
+        var cat = Cat(name: "Steve")
+        cat.rename(to: "Peter")
+        print(cat.name) // Peter
+        ```
+
+        In this code snippet, there are the following new patterns:
+        - `var cat = Cat(name: "Steve")` assigns a value of the type `Cat` to a variable. The constant can be called _and modified_ by its name `cat` after the declaration.
+        - A method definition starting with `mutating` can modify the properties while it runs. Nonmutating functions normally return a value, similar to computed properties, they cannot change the instance.
+        - Call a method using the syntax `instance.method()`, and specify parameters if necessary.
+        - As you saw before, you can access properties (and also methods) from within a type directly by its name. `self` refers to the instance it runs on, so `self.name` also calls the property `name`.
+
+        > Additional information:
+        > - [Methods](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/methods)
+        > - [The Basics](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics)
+        > - [Strings and Characters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters)
+        > - [Functions](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions)
+        > - [Structures and Classes](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/classesandstructures)
+        > - [Properties](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/properties)
+        > - [Initialization](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization)
+
+        ## Modifiers
+        Modifiers are special methods that, instead of mutating an instance, create a copy of an instance, modify the copy and return the copy.
+        ```swift
+        struct Box {
+
+            var isOpen = false
+
+            func open(_ isOpen: Bool = true) -> Self {
+                var newSelf = self
+                newSelf.isOpen = isOpen
+                return newSelf
+            }
+
+        }
+
+        // Save an instance to a variable
+        var box = Box().open().open(false).open()
+        print(box.isOpen) // false
+        ```
+
+        The new concepts are:
+        - `Self` (with a capital "S") refers to the type it is defined on (in this case `Box`).
+        - In all the previous example, the `return` keyword has been omitted for returning values because Swift allows this for bodies with a single line only. As this function's body spans multiple lines, the `return` keyword is required.
+
+        > Additional information:
+        > - [The Basics](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics)
+        > - [Functions](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions)
+        > - [Structures and Classes](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/classesandstructures)
+        > - [Properties](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/properties)
+        > - [Methods](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/methods)
+        > - [Initialization](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization)
+
+        ## Closures
+        You cannot only pass values as parameters, but also functions. This can be done using a special syntax called closure expression syntax.
+        ```swift
+        func run(function: () -> Void) {
+            function()
+        }
+
+        // Call the run function
+        run {
+            print("Hello, world!")
+        } // Hello, world!
+        ```
+
+        `() -> Void` is the type of a function that accepts no argument (`()`) and returns nothing (`Void`).
+
+        It's also possible to use parameters within closures, and return a value:
+        ```swift
+        func modifyAndPrint(string: String, modify: (String) -> String) {
+            print(modify(string))
+        }
+
+        // Call the modifyAndPrint function
+        modifyAndPrint(string: "Hello") { string in
+            "\(string), world!"
+        } // Hello, world!
+        ```
+
+        > Additional information:
+        > - [Closures](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/closures)
+        > - [The Basics](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics)
+        > - [Strings and Characters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters)
+        > - [Functions](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/functions)
+
+        ## Protocols
+        A protocol is a type that defines requirements for structures and other types.
+        It cannot be initialized itself, but implemented by other types.
+        ```swift
+        protocol Named {
+
+            var name: String { get }
+
+        }
+
+        // Adopt the protocol by a structure
+        struct Cat: Named {
+
+            // This property is required to conform to the protocol (it can be stored or computed)
+            var name: String
+
+        }
+
+        let namedSpecies: Named = Cat(name: "Bob")
+        print(namedSpecies.name) // Bob
+        ```
+
+        `var name: String { get }` defines that the property `name` must be available. If it were `var name: String { get set }`, a constant or simple computed variable wouldn't work since the property has to be mutable.
+
+        You can see that a type cannot only be specified explicitly for properties, but for any variable or constant. Without the `: Named`, the type of `namedSpecies` would be `Cat`.
+        Setting the type to `Named` allows it to take a value of any type conforming to the `Named` protocol.
+
+        > Additional information:
+        > - [Protocols](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols)
+        > - [The Basics](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/thebasics)
+        > - [Strings and Characters](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters)
+        > - [Structures and Classes](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/classesandstructures)
+        > - [Properties](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/properties)
+        > - [Initialization](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/initialization)
+        > - [Opaque and Boxed Types](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/opaquetypes)
+
+        ## Property wrappers
+        A property wrapper is a structure that is designed to wrap a property, meaning that it controls how a property is stored.
+        ```swift
+        @propertyWrapper
+        struct Percentage {
+
+            private var number = 0
+
+            var wrappedValue: Int {
+                get {
+                    number
+                }
+                set {
+                    if newValue >= 0 && newValue <= 100 {
+                        number = newValue
+                    }
+                }
+            }
+
+        }
+
+        struct Transportation {
+
+            // Use the property wrapper
+            @Percentage var train: Int
+
+        }
+
+        var transportation = Transportation()
+        transportation.train = 63
+        print(transportation.train) // 63
+        transportation.train = 104
+        print(transportation.train) // 63
+        ```
+
+        In this code example, you can see different new concepts:
+        - `private` determines that `number` is not visible outside the structure.
+        - The computed property `wrappedValue` contains a getter and a setter. So far, we have seen computed variables with a getter only. The setter handles assignments with `=`, as you have seen for stored properties already.
+        - Use a property wrapper by adding the @ symbol to the beginning of the struct's name.
+    }
+
+}

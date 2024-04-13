@@ -1,0 +1,28 @@
+default: en
+
+label:
+    en: Label
+
+cancel:
+    en: Cancel
+
+add:
+    en: Add
+
+addTooltip:
+    en: Add Task...
+
+delete:
+    en: Delete
+
+deleteTitle:
+    en: Delete Task?
+
+deleteTooltip:
+    en: Delete Task...
+
+deleteDescription:
+    en: Deleted tasks and their subtasks cannot be restored
+
+subtasks(count):
+    en: (count) subtasks

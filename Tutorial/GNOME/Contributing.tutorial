@@ -1,0 +1,40 @@
+@Article {
+
+    @Intro(title: "Contribute to GNOME") {
+        Creating apps is only one of numerous ways to contribute to the GNOME project.
+    }
+
+    @ContentAndMedia {
+        # Design
+        In GNOME, there are various areas that require a lot of design work: planning user interfaces, create app icons, design images and icons used inside of apps, maintain the human interface guidelines, etc.
+        Learn [where to contribute](https://welcome.gnome.org/team/design/) on the official GNOME website.
+    }
+
+    @ContentAndMedia {
+        # Translate
+        Translate GNOME apps or the desktop environment itself into your native language.
+        Find more information on the repositories of the apps, or on the [GNOME website](https://wiki.gnome.org/TranslationProject).
+    }
+
+    @ContentAndMedia {
+        # Use GNOME
+        Use the GNOME desktop environment, show it to other people, and report bugs and suggestions to the project repositories, or discuss problems on Mastodon.
+    }
+
+    @ContentAndMedia {
+        # More Information
+        Find a list of [areas where you can contribute](https://welcome.gnome.org/#where-to-contribute) and [contribution guides for apps](https://welcome.gnome.org/#contribute-to-an-app) on the GNOME website.
+        There are many more apps available on [GitHub](https://github.com/topics/gnome) and [GNOME's GitLab instance](https://gitlab.gnome.org/).
+        Usually, you find a link to the repository in an app's page in GNOME software.
+    }
+
+    @ContentAndMedia {
+        # Develop Apps
+        This tutorial covers the creation of GNOME apps using Adwaita for Swift.
+        There are many other bindings available for various programming languages, so if you don't want to learn Swift, take a look at a [selection of official and unofficial bindings](https://github.com/janvhs/Awesome-Libadwaita).
+
+        In this tutorial, we'll start by covering the basics of Swift required for _Adwaita for Swift_.
+        If you have questions, ideas, find typos, or think a passage could be improved, feel free to [participate in the _Adwaita for Swift_ discussions](https://github.com/AparokshaUI/adwaita-swift/discussions).
+    }
+
+}

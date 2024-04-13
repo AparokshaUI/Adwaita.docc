@@ -1,0 +1,75 @@
+@Tutorial {
+
+    @Intro(title: "Model the task data") {
+        Data modelling is the art of creating a data model for representing real-world concepts in your code.
+        Create a model to represent the tasks.
+    }
+
+    @Section(title: "Create a new type to represent a task") {
+        @ContentAndMedia {
+            Create a `Task` type that holds a task's label, completion, and subtasks.
+        }
+        @Steps {
+            @Step {
+                Create a new file `Task.swift` by right-clicking on the `Sources` folder in the sidebar of GNOME Builder.
+                @Image(source: "NewFile.png", alt: "GNOME Builder's file context menu in the sidebar.")
+            }
+            @Step {
+                Declare a new structure called `Task`.
+                @Code(name: "Task.swift", file: "Task2.swift", previousFile: "Task1.swift")
+            }
+            @Step {
+                Create the three stored properties for a task's label, completion, and subtasks.
+                @Code(name: "Task.swift", file: "Task3.swift")
+            }
+            @Step {
+                In the user interface, there will be a text field for entering the label of a new task.
+                This means that a label is available before the instance of the type `Task` is created.
+                The other two properties have a default value at the beginning and can be modified after the task's creation.
+                Therefore, it makes sense to initialize these properties with default values.
+
+                Let `done` be `false` and `subtasks` be an empty array when adding a task.
+                @Code(name: "Task.swift", file: "Task4.swift")
+            }
+            @Step {
+                The check box for toggling the task's completion should not only indicate whether a task is done or not,
+                but also indicate the state of their subtasks. If the task is not completed, but some of their subtasks are, a mixed state design is visible.
+
+                It is a good practice to add computed properties to type definitions in order to be able to focus on the UI when creating views.
+                @Code(name: "Task.swift", file: "Task5.swift")
+            }
+        }
+    }
+
+    @Section(title: "Add protocol conformances") {
+        @ContentAndMedia {
+            As you've already seen in the Foundation section, a common way to make functions and types more flexible is by using protocols instead of concrete types.
+            Every type conforming to a certain protocol can then be used as a parameter.
+            In this section, you'll make the task type to protocols enabling tasks to be easily saved to the disk, listed in a view, or used for the window's title.
+        }
+
+        @Steps {
+            @Step {
+                Add `Codable` conformance.
+
+                `Codable` enables a Swift type to be easily converted into and out of JSON representation that can be saved on the disk.
+                @Code(name: "Task.swift", file: "Task6.swift", previousFile: "Task5.swift")
+            }
+            @Step {
+                Add `Identifiable` conformance.
+
+                `Identifiable` is a protocol that requires a type to have a property `id` that is unique across the app.
+                `UUID` is a type often used for IDs that stores a random value after its initialization and is defined on Swift's [Foundation library](https://developer.apple.com/documentation/foundation).
+                It is used by the ``List`` view that you'll later use to track how elements change.
+                @Code(name: "Task.swift", file: "Task7.swift")
+            }
+            @Step {
+                Add `CustomStringConvertible` conformance.
+
+                This will allow the `Task` type to be used as a destination in the ``NavigationView`` that will be used for navigating subtasks, making the parent task the window's title.
+                @Code(name: "Task.swift", file: "Task8.swift")
+            }
+        }
+    }
+
+}

@@ -1,0 +1,54 @@
+@Tutorial {
+    @Intro(title: "Set up GNOME") {
+        While you can develop Adwaita apps on macOS and Windows, it is recommended to use Linux.
+        Learn how to install GNOME on your device.
+    }
+
+    @Section(title: "Install GNOME on Apple silicon devices") {
+        @ContentAndMedia {
+            Follow this tutorial if you want to install GNOME on a recent Mac model. Note that you could also use a virtual machine instead.
+        }
+
+        @Steps {
+            @Step {
+                Install [Asahi Linux](https://asahilinux.org/) by running the following command into a macOS terminal: **`curl https://alx.sh | sh`**
+
+                Follow the instructions until you get to the OS selection.
+                @Image(source: "Asahi.svg", alt: "A laptop showing the Asahi logo.")
+            }
+            @Step {
+                Make sure to select the GNOME installation option.
+
+                Follow the instructions to complete the setup.
+                @Image(source: "SelectGNOME.png", alt: "Terminal showing the OS selection.")
+            }
+            @Step {
+                Configure GNOME. Use the settings app to change the display scaling, cursor speed, etc.
+
+                Make sure to have at least GNOME Software, Files, and a terminal emulator installed (this should be the case).
+                @Image(source: "GNOMEMacBook.png", alt: "GNOME desktop showing the Mac system information.")
+            }
+        }
+    }
+
+    @Section(title: "Install GNOME on other devices") {
+        @ContentAndMedia {
+            If you own an older Mac or another device, you have more choice.
+        }
+
+        @Steps {
+            @Step {
+                Select a Linux distro [on the GNOME website](https://www.gnome.org/getting-gnome/). Follow the instructions on the distro's website.
+
+                Recommended distros providing a vanilla GNOME experience out of the box are [Vanilla OS](https://vanillaos.org/) and [Fedora Workstation](https://fedoraproject.org/en/workstation/download).
+                Ubuntu is a popular distro that isn't particularly recommended as it applies its theme on your GNOME apps, and [Flatpak](https://flatpak.org/) needs additional setup.
+                @Image(source: "VanillaOS.png", alt: "The Vanilla OS website.")
+            }
+            @Step {
+                Configure GNOME using the GNOME settings app.
+                Make sure to have GNOME Software, GNOME Files (Nautilus), and a terminal emulator (e.g. GNOME Console) installed.
+                @Image(source: "GNOMELaptop.png", alt: "GNOME on a laptop.")
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@Article {
+
+    @Intro(title: "About Flatpak") {
+        In the previous tutorial, you have named various files required for distributing apps via Flatpak.
+    }
+
+    @
+
+}

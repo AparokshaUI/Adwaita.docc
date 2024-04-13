@@ -1,0 +1,122 @@
+@Tutorial {
+
+    @Intro(title: "Create views") {
+        This is a beginner tutorial. It shows how to create a simple "Hello, world!" app using ``Adwaita``.
+        While there are instructions for building on macOS, _Adwaita for Swift_ works best on Linux.
+    }
+
+    @Section(title: "Introduction to views") {
+        @ContentAndMedia {
+            Let's start by taking a look at the code of the template view.
+        }
+
+        @Steps {
+            @Step {
+                Open the file `AdwaitaTemplate.swift`.
+
+                `@main` sets this struct as the app's entry point. You'll use this only once per app on the structure conforming to ``App``.
+                @Code(name: "AdwaitaTemplate.swift", file: "AdwaitaTemplate1.swift")
+            }
+            @Step {
+                The computed variable `scene` contains all the windows available in your app.
+                A window contains _views_.
+
+                You can call other views inside of views (such as the ``Text`` or `ToolbarView` in this example).
+                Methods like ``View/padding(_:_:)`` and ``View/topToolbar(visible:_:)`` often used to tweak views or wrap views into other views (you'll get more familiar with them soon).
+                @Code(name: "AdwaitaTemplate.swift", file: "AdwaitaTemplate1.swift")
+            }
+            @Step {
+                Read how views work in the article <doc:CreatingViews>.
+
+                Then, try to create a view `ContentView` yourself that contains all the content of the window, and call it in the window.
+                Find a possible solution in the next step.
+                @Code(name: "AdwaitaTemplate.swift", file: "AdwaitaTemplate1.swift")
+            }
+            @Step {
+                This is a possible solution. You could find the types for the `ToolbarView` view properties in the file `ToolbarView.swift`.
+                @Code(name: "AdwaitaTemplate.swift", file: "AdwaitaTemplate2.swift")
+            }
+            @Step {
+                Let's replace the text by a button, printing "Hello, world!" when it gets pressed.
+
+                An overview of the standard widgets and their modifiers is available in the docs for ``Adwaita``. We'll discuss details later.
+                @Code(name: "AdwaitaTemplate.swift", file: "AdwaitaTemplate3.swift")
+            }
+        }
+    }
+
+    @Section(title: "State") {
+        @ContentAndMedia {
+            State is data that can be accessed in a view and its child views.
+            To understand this section, make sure to have read <doc:CreatingViews>.
+        }
+
+        @Steps {
+            @Step {
+                Use the ``State`` property wrapper to add state.
+
+                Are you able to extract only the button (without its modifiers) into an own view?
+                @Code(name: "AdwaitaTemplate.swift", file: "AdwaitaTemplate4.swift", previousFile: "AdwaitaTemplate3.swift")
+            }
+            @Step {
+                You have to use the ``Binding`` property wrapper.
+                @Code(name: "AdwaitaTemplate.swift", file: "AdwaitaTemplate5.swift")
+            }
+        }
+    }
+
+    @Assessments {
+        @MultipleChoice {
+            What code _could_ create an instance of the following view if used in the right context?
+            ```swift
+            struct ContentView: View {
+
+                @Binding var section: String
+                @State private var title = "Title"
+                var app: GTUIApp
+
+                var view: Body {
+                    ...
+                }
+
+            }
+            ```
+
+            @Choice(isCorrect: false) {
+                ```swift
+                ContentView()
+                ```
+                @Justification {
+                    You must provide values for properties that don't get a default value.
+                }
+            }
+            @Choice(isCorrect: true) {
+                ```swift
+                ContentView(section: $section, app: app)
+                ```
+                @Justification {
+                    You need to pass a value for `section` and `app`. As `title` is a state value and therefore private to the view, it has to receive a default value inside the view and cannot be determined from outside the view.
+                }
+            }
+            @Choice(isCorrect: false) {
+                ```swift
+                ContentView(section: $section, title: "Title", app: app)
+                ```
+                @Justification {
+                    State values are private to a view. You cannot pass values from outside to them.
+                }
+            }
+            @Choice(isCorrect: false) {
+                ```swift
+                ContentView($section, "Title", app)
+                ```
+                @Justification {
+                    In Swift, argument labels are required when passing parameters to a view. Also, a state value cannot be accessed from outside the view.
+                }
+            }
+        }
+    }
+
+
+
+}

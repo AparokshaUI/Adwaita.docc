@@ -1,0 +1,13 @@
+default: en
+
+label:
+    en: Label
+
+cancel:
+    en: Cancel
+
+add:
+    en: Add
+
+addTooltip:
+    en: Add Task...

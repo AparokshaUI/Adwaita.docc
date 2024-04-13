@@ -1,0 +1,33 @@
+@Tutorial {
+    @Intro(title: "Install the app") {
+        Now that you have a working app, learn how to install it on your device.
+    }
+
+    @Section(title: "Install the app") {
+        @ContentAndMedia {
+            Install the app on your device.
+        }
+
+        @Steps {
+            @Step {
+                Use the "Export" feature in GNOME Builder to generate a Flatpak app bundle.
+                @Image(source: "Export.png", alt: "GNOME Builder's export feature")
+            }
+            @Step {
+                Your file manager should pop up. Open the `.flatpak` file and install the app.
+                @Image(source: "Software.png", alt: "GNOME Software showing the Subtasks app")
+            }
+        }
+    }
+
+    @Section(title: "Experiment with the code") {
+        @ContentAndMedia {
+            Hopefully, you are now able to modify the app to fit your needs.
+            Find the available widgets and their modifiers in the [docs](https://aparokshaui.github.io/adwaita-swift/documentation/adwaita),
+            interact on [GitHub](https://github.com/AparokshaUI/adwaita-swift) if you need a widget that you cannot find in the docs,
+            and showcase your version of the Subtasks app or other projects related to _Adwaita for Swift_ in the [discussions](https://github.com/AparokshaUI/adwaita-swift/discussions/categories/show-and-tell).
+
+            Otherwise, feel free to [ask questions](https://github.com/AparokshaUI/adwaita-swift/discussions).
+        }
+    }
+}

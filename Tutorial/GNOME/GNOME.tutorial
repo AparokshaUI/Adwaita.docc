@@ -1,0 +1,32 @@
+@Article {
+
+    @Intro(title: "The GNOME project") {
+        Learn about the GNOME project and how you can get involved.
+    }
+
+    @ContentAndMedia {
+        # GNOME shell
+        The GNOME shell is a popular open-source desktop environment for Linux.
+        There is a vast app ecosystem built using its modern Adwaita design language, enabling a unique consistency across the platform.
+        GNOME apps follow strictly the philosophy "do one thing and do it well", and using them requires little technical knowledge.
+        You can find more information in the [GNOME Human Interface Guidelines](https://developer.gnome.org/hig/index.html).
+
+        ![The GNOME desktop environment showing some apps.](Screenshot.png)
+    }
+
+    @ContentAndMedia {
+        # Adwaita
+        Adwaita is not only a design language, but a [C API](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.5/) providing user interface elements, so called _widgets_, for native GNOME apps, built on top of the powerful [GTK widget toolkit](https://docs.gtk.org/gtk4/).
+        It offers various UI elements that support pointer, touch, and keyboard out of the box, and allows the creation of accessible apps without further configuration.
+        There are modern controls, containers, navigation design patterns and elements for visual feedback, working great on different types of screens, including phones.
+    }
+
+    @ContentAndMedia {
+        # Get in touch
+        The GNOME community is very welcoming to new members.
+        You will find a lot of interesting discussions about GNOME on the [Fediverse](https://mstdn.social/tags/gnome).
+        Matrix is used as an instant messaging platform. Join the [general GNOME chat](https://matrix.to/#/#gnome:gnome.org) as well as specialized chats.
+        Get news via [GNOME on Mastodon](https://floss.social/@gnome), [This Week in GNOME](https://thisweek.gnome.org/), or the [blogs of GNOME contributors](https://planet.gnome.org/).
+    }
+
+}

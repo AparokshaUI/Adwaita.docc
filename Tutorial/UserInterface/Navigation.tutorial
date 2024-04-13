@@ -1,0 +1,226 @@
+@Tutorial {
+    @Intro(title: "Implement the navigation") {
+        Implement the concept of subtasks into the UI using the ``NavigationView``.
+    }
+
+    @Section(title: "Add the navigation view") {
+        @ContentAndMedia {
+            Implement the navigation view that displays the task list at the current navigation location.
+        }
+
+        @Steps {
+            @Step {
+                Create a new file `ContentView.swift` containing the view `ContentView` in the `Sources` folder.
+                @Code(name: "ContentView.swift", file: "ContentView1.swift")
+            }
+            @Step {
+                In `Subtasks.swift`, set the content to `ContentView` and remove the now unused `tasks` variable.
+                @Code(name: "Subtasks.swift", file: "Subtasks7.swift", previousFile: "Subtasks6.swift") {
+                    @Image(source: "Subtasks7.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add the `tasks` variable in the content view. This is possible because support for multiple windows doesn't make sense in this app, so there won't be multiple content views with different data.
+
+                The string in the brackets indicates that the variable will be saved when quitting the app and remember its value when opening the app again.
+                @Code(name: "ContentView.swift", file: "ContentView2.swift", previousFile: "ContentView1.swift") {
+                    @Image(source: "Subtasks7.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add the ``NavigationView``.
+
+                `destination` is of the type ``NavigationStack``, which means that it stores the navigation path.
+                If the path is empty, the `initialView` will be presented, otherwise, line 16 will be visible for the last element in the path which is of the type `Task`.
+                @Code(name: "ContentView.swift", file: "ContentView3.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Implement the navigation") {
+        @ContentAndMedia {
+            Now that a basic form of the navigation is here, implement the navigating action when a tasks is clicked.
+        }
+
+        @Steps {
+            @Step {
+                Pass the navigation destination to the task list view.
+                @Code(name: "ContentView.swift", file: "ContentView4.swift")
+            }
+            @Step {
+                In the task list view, add the destination binding parameter and implement the navigation.
+
+                You can navigate using ``NavigationStack/push(_:)`` and ``NavigationStack/pop()``.
+                @Code(name: "TaskList.swift", file: "TaskList23.swift", previousFile: "TaskList22.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Replace the label text with the actual task list for subtasks.
+
+                A problem appears: it's not possible to modify the tasks easily. ``Binding/constant(_:)`` allows setting a binding to a value that cannot be changed from inside that view.
+                This is a temporary solution for previewing, as the user should be able to edit subtasks later.
+                @Code(name: "ContentView.swift", file: "ContentView5.swift", previousFile: "ContentView4.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Fixing this problem is actually quite straightforward: use a binding to the task.
+
+                Accomplish this by changing the type from `NavigationStack<Task>` to `NavigationStack<Binding<Task>>`.
+                @Code(name: "ContentView.swift", file: "ContentView6.swift", previousFile: "ContentView5.swift")
+            }
+            @Step {
+                We made `Task` conform to `CustomStringConvertible` so that the navigation view can fetch the navigation title.
+                `Binding<Task>` does not conform to `CustomStringConvertible` automatically, so it has to be implemented manually.
+
+                Create a new file `Binding.swift` for _extending_ the ``Binding`` type to conform to `CustomStringConvertible` if its child type conforms to `CustomStringConvertible`.
+                @Code(name: "Binding.swift", file: "Binding.swift")
+            }
+            @Step {
+                Adapt the task list view to push a binding to stack.
+
+                The project will successfully compile again.
+                @Code(name: "TaskList.swift", file: "TaskList24.swift", previousFile: "TaskList23.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Show mixed state") {
+        @ContentAndMedia {
+            When designing the data type, the computed variable `mixed` was added to the task type.
+            If a task is not done, but some of their subtasks are, the check button should be in this state.
+        }
+
+        @Steps {
+            @Step {
+                Use the ``CheckButton/inconsistent(_:)`` modifier.
+                @Code(name: "TaskList.swift", file: "TaskList25.swift", previousFile: "TaskList24.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Add the delete feature") {
+        @ContentAndMedia {
+            Being able to remove tasks is as important as being able to create them.
+            As deleting a task leads to the loss of data, it is important to ask for confirmation before actually deleting a task.
+        }
+
+        @Steps {
+            @Step {
+                Add the basis of the UI for deleting a task to the task list view.
+                @Code(name: "TaskList.swift", file: "TaskList26.swift", previousFile: "TaskList25.swift") {
+                    @Image(source: "TaskList26.png", alt: "The window.")
+                }
+            }
+            @Step {
+                In the previous step, placeholders were used for certain strings.
+                Add the localized strings to the localization file.
+                @Code(name: "Localized.yml", file: "Localized3.yml", previousFile: "Localized2.yml") {
+                    @Image(source: "TaskList26.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Use the strings in the task list view.
+                @Code(name: "TaskList.swift", file: "TaskList27.swift", previousFile: "TaskList26.swift") {
+                    @Image(source: "TaskList26.png", alt: "The window.")
+                }
+            }
+            @Step {
+                The task list view doesn't have access to the data required to delete the parent.
+                Instead of passing a lot of information to the task list view required for deleting a task only, use a _closure._
+
+                The closure is optional because there is no delete action in the "main" view.
+                @Code(name: "TaskList.swift", file: "TaskList28.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add a closure to the task list view in the content view for the navigated state (not for the initial view).
+                @Code(name: "ContentView.swift", file: "ContentView7.swift", previousFile: "ContentView5.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                To perform the actual deletion, add a function `delete` to the task model.
+                @Code(name: "Task.swift", file: "Task9.swift", previousFile: "Task8.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Create a new file `Array.swift`.
+
+                Add a delete function to arrays with elements of the type `Task` as we are having an array of tasks in the content view.
+                @Code(name: "Array.swift", file: "Array1.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Update the task list model to use the new `delete` function defined on the `Array` type.
+                @Code(name: "Task.swift", file: "Task10.swift", previousFile: "Task9.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Update the content view to use the new `delete` function in the delete closure.
+                @Code(name: "ContentView.swift", file: "ContentView8.swift", previousFile: "ContentView7.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+            @Step {
+                When a task gets deleted, it should not be visible anymore. Therefore, it is important to remove the last element in the navigation stack.
+                @Code(name: "ContentView.swift", file: "ContentView9.swift") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+        }
+    }
+
+    @Section(title: "Advanced localization") {
+        @ContentAndMedia {
+            You already came across localization multiple times in this tutorial.
+            Adding a label presenting the number of subtasks of a task requires more complex localization.
+        }
+
+        @Steps {
+            @Step {
+                Add a placeholder subtitle.
+                @Code(name: "TaskList.swift", file: "TaskList30.swift", previousFile: "TaskList29.swift") {
+                    @Image(source: "TaskList30.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Add the localized string with the _parameter_ `count`.
+                @Code(name: "Localized.yml", file: "Localized4.yml", previousFile: "Localized3.yml") {
+                    @Image(source: "TaskList30.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Replace the placeholder string by the localized string.
+                @Code(name: "TaskList.swift", file: "TaskList31.swift", previousFile: "TaskList30.swift") {
+                    @Image(source: "TaskList30.png", alt: "The window.")
+                }
+            }
+            @Step {
+                With the current implementation, one subtask results in the label "1 subtasks". Instead, we want "1 subtask".
+                It's possible to fix this with a translation with a condition.
+                @Code(name: "Localized.yml", file: "Localized5.yml", previousFile: "Localized4.yml") {
+                    @Image(source: "TaskList30.png", alt: "The window.")
+                }
+            }
+            @Step {
+                Tasks without a subtask shouldn't show the text "0 subtasks". Instead, they shouldn't have a subtitle at all.
+                Luckily, passing an empty string as a subtitle makes the subtitle completely disappear.
+                @Code(name: "Localized.yml", file: "Localized6.yml") {
+                    @Image(source: "TaskList15.png", alt: "The window.")
+                }
+            }
+        }
+    }
+}
