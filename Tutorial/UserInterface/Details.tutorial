@@ -50,6 +50,15 @@
                     @Image(source: "ContentView11.png", alt: "The window.")
                 }
             }
+            @Step {
+                Don't forget to localize the placeholder page!
+
+                Instead of doing it in a text editor, install the [Localizer](https://github.com/AparokshaUI/Localizer) app and use the UI.
+                Then, update the task list view accordingly.
+                @Code(name: "Localized.yml", file: "Localized7.yml", previousFile: "Localized6.yml") {
+                    @Image(source: "ContentView11.png", alt: "The window.")
+                }
+            }
         }
     }
 
@@ -103,7 +112,7 @@
             }
             @Step {
                 Update the localized strings.
-                @Code(name: "Localized.yml", file: "Localized7.yml", previousFile: "Localized6.yml") {
+                @Code(name: "Localized.yml", file: "Localized8.yml", previousFile: "Localized7.yml") {
                     @Image(source: "Localized7.png", alt: "The window.")
                 }
             }

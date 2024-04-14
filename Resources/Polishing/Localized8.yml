@@ -1,5 +1,9 @@
 default: en
 
+about:
+    de: "Info zu Subtasks"
+    en: "About Subtasks"
+
 add:
     de: "Hinzufügen"
     en: "Add"
