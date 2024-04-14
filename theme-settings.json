@@ -26,7 +26,7 @@
                 "light": "",
                 "dark": "#1d1d1f"
             },
-            "tutorials-overview-background": "linear-gradient(180deg, rgba(43,20,23,1) 0%, rgba(65,24,30,0.3) 60%, rgba(0,0,0,1) 100%)",
+            "tutorials-overview-background": "linear-gradient(180deg, rgba(43,20,23,1) 0%, rgba(41, 3, 8, 0.808) 60%, rgba(0,0,0,1) 100%)",
             "fill-light-blue-secondary": "#ea3358",
             "fill-blue": "#ea3358",
             "figure-blue": "#ea3358",
