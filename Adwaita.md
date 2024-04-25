@@ -127,6 +127,7 @@ Find more information in the [template repository](https://github.com/AparokshaU
 - ``Overlay``
 - ``OverlaySplitView``
 - ``PasswordEntryRow``
+- ``Picture``
 - ``Popover``
 - ``PreferencesGroup``
 - ``PreferencesPage``
