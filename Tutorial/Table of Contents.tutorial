@@ -2,7 +2,7 @@
 
     @Intro(title: "Develop Apps for GNOME") {
         Learn the basics of _``Adwaita`` for Swift_ to create beautiful apps for the GNOME desktop.
-        @Image(source: "Overview.svg", alt: "An iMac with GNOME.")
+        @Image(source: "Overview.png", alt: "An iMac with GNOME.")
     }
 
     @Volume(name: "Foundation") {
