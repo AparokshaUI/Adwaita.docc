@@ -97,6 +97,7 @@ Find more information in the [template repository](https://github.com/AparokshaU
 
 - ``ActionRow``
 - ``AlertDialog``
+- ``AspectFrame``
 - ``Avatar``
 - ``Banner``
 - ``Bin``
@@ -140,6 +141,7 @@ Find more information in the [template repository](https://github.com/AparokshaU
 - ``SpinRow``
 - ``Spinner``
 - ``SplitButton``
+- ``StateWrapper``
 - ``StatusPage``
 - ``SwitchRow``
 - ``Text``
