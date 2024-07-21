@@ -111,6 +111,7 @@ Find more information in the [template repository](https://github.com/AparokshaU
 - ``ComboRow``
 - ``EntryRow``
 - ``ExpanderRow``
+- ``Fixed``
 - ``FlowBox``
 - ``ForEach``
 - ``Form``
