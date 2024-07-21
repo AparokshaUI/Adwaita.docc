@@ -138,6 +138,7 @@ Find more information in the [template repository](https://github.com/AparokshaU
 - ``ScrollView``
 - ``SearchBar``
 - ``SearchEntry``
+- ``Separator``
 - ``SpinRow``
 - ``Spinner``
 - ``SplitButton``
